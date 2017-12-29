@@ -2,5 +2,5 @@ package edu.pw.platon.user;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, String> {
+public interface PrivilegeRepository extends CrudRepository<Privilege, Long> {
 }

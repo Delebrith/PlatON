@@ -4,14 +4,15 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 
 
 @Entity
 @Data
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     @Id
@@ -28,20 +29,23 @@ public class User {
     @NotEmpty
     private String firstName;
 
-    @NotNull
-    @NotEmpty
     private String secondName;
 
     @NotNull
     @NotEmpty
-    private String surname;
+    private String lastName;
 
     @NotNull
     @NotEmpty
     @Email
     private String email;
 
-    @NotNull
-    @NotEmpty
-    private String role;
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "username"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 }
