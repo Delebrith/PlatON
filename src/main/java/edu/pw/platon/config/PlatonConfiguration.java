@@ -14,7 +14,7 @@ public class PlatonConfiguration {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 // forward requests to /admin and /user to their index.html
-                registry.addViewController("/login").setViewName("forward:/index.html");
+                registry.addViewController("/username").setViewName("forward:/index.html");
                 registry.addViewController("/user").setViewName(
                         "forward:/user/index.html");
             }

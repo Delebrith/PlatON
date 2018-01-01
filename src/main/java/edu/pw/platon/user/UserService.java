@@ -1,10 +1,12 @@
 package edu.pw.platon.user;
 
-import org.springframework.stereotype.Service;
+import edu.pw.platon.user.api.*;
 
-@Service
 public interface UserService {
-    String login(User user);
+    Response login(String username, String passwordhash);
     void logout(User user);
-    void changePassword(String oldPassword, String newPassword);
+    Response changePassword(String username, String oldPasswordHash, String newPasswordHash);
+    Response getRequirementsInfo(String courseId);
+    Response getScheduleInfo(String semesterCode, String subjectCode);
+    Response getSubjectInfo(String subjectCode);
 }

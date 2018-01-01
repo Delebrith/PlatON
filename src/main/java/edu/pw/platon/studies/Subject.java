@@ -1,5 +1,6 @@
 package edu.pw.platon.studies;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -27,6 +28,10 @@ public class Subject {
     @NotEmpty
     @ManyToOne
     private PassMethod passMethod;
+
+    @NotNull
+    @NotEmpty
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Collection<Realisation> realisations;
