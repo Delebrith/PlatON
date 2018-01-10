@@ -12,6 +12,6 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "username")
 public class Authority extends User{
 
-    //pending requests TBD
+    private String roomNo;
 
 }

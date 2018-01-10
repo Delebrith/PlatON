@@ -1,7 +1,6 @@
 package edu.pw.platon.studies;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,12 +19,7 @@ public class Exam {
     private Date date;
 
     @NotNull
-    @NotEmpty
-    private String startTime;
-
-    @NotNull
-    @NotEmpty
-    private String endTime;
+    private Float durationTime;
 
     @OneToOne
     Realisation realisation;

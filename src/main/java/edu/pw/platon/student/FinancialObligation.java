@@ -27,8 +27,6 @@ public class FinancialObligation {
     @NotEmpty
     private String accountNo;
 
-    @NotNull
-    @NotEmpty
     private Date dueDate;
 
     @ManyToOne

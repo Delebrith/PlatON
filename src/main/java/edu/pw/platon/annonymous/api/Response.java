@@ -1,4 +1,4 @@
-package edu.pw.platon.user.api;
+package edu.pw.platon.annonymous.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

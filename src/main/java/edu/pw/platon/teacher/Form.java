@@ -1,6 +1,5 @@
 package edu.pw.platon.teacher;
 
-import edu.pw.platon.studies.ClassDate;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -18,7 +17,7 @@ public class Form {
     private Long id;
 
     @OneToMany
-    Collection<ClassDate> classDatesOptions;
+    Collection<Preference> preferences;
 
     @NotNull
     @NotEmpty
@@ -26,4 +25,7 @@ public class Form {
 
     private boolean manyChoices;
 
+    @NotNull
+    @NotEmpty
+    private String status;
 }

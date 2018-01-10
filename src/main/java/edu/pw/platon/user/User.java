@@ -23,7 +23,7 @@ public class User {
 
     @NotNull
     @NotEmpty
-    private String passwordHash;
+    private String password;
 
     @NotNull
     @NotEmpty
@@ -40,7 +40,7 @@ public class User {
     @Email
     private String email;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
