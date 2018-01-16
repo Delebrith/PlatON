@@ -3,6 +3,7 @@ package edu.pw.platon.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,15 +14,17 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(@Autowired UserRepository userRepository) {
+    public UserServiceImpl(@Autowired UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public boolean login(String username, String password) {
         User user = userRepository.findOne(username);
-        return user != null && user.getPassword().equals(password);
+        return user != null && passwordEncoder.matches(password, user.getPassword());
     }
 
     @Override
