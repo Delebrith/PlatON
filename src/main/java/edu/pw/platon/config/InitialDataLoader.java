@@ -3,7 +3,9 @@ package edu.pw.platon.config;
 import edu.pw.platon.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,8 @@ public class InitialDataLoader implements
     private  RoleRepository roleRepository;
     @Autowired
     private PrivilegeRepository privilegeRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -44,7 +48,8 @@ public class InitialDataLoader implements
         user.setUsername("testAdmin");
         user.setFirstName("Test");
         user.setLastName("Test");
-        user.setPassword("test");
+        String password = passwordEncoder.encode("test");
+        user.setPassword(password);
         user.setEmail("test@test.com");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
