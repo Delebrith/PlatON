@@ -13,12 +13,12 @@ import java.util.Collection;
 @Entity
 @Data
 @PrimaryKeyJoinColumn(name = "username")
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class Teacher extends User{
 
     @NotNull
     @NotEmpty
-    private int internalNo;
+    private Integer internalNo;
 
     private String roomNo;
 
@@ -29,4 +29,8 @@ public class Teacher extends User{
             inverseJoinColumns = @JoinColumn(name = "realisation_id", referencedColumnName = "id")
     )
     private Collection<Realisation> realisations;
+
+    public Teacher() {
+        super();
+    }
 }

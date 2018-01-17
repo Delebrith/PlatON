@@ -3,6 +3,7 @@ package edu.pw.platon.utilities;
 import edu.pw.platon.student.Student;
 import edu.pw.platon.student.StudentRepository;
 import edu.pw.platon.user.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
@@ -10,16 +11,20 @@ import java.util.Collection;
 
 public class UserDataGenerator {
 
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PrivilegeRepository privilegeRepository;
-    private StudentRepository studentRepository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PrivilegeRepository privilegeRepository;
+    private final StudentRepository studentRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserDataGenerator(UserRepository userRepository, RoleRepository roleRepository, PrivilegeRepository privilegeRepository, StudentRepository studentRepository) {
+    public UserDataGenerator(UserRepository userRepository, RoleRepository roleRepository,
+                             PrivilegeRepository privilegeRepository, StudentRepository studentRepository,
+                             PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.privilegeRepository = privilegeRepository;
         this.studentRepository = studentRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -67,11 +72,12 @@ public class UserDataGenerator {
     public void createUsers() {
         Student student = new Student();
         student.setUsername("student");
-        student.setPassword("hehexd");
+        student.setPassword(passwordEncoder.encode("hehexd"));
         student.setEmail("student@student.pl");
         student.setFirstName("Jan");
         student.setLastName("Studencki");
         student.setStudentBookNo(123456);
+        student.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
         studentRepository.save(student);
     }
 

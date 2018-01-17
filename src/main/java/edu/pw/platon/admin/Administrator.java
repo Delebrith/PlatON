@@ -9,10 +9,14 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @PrimaryKeyJoinColumn(name = "username")
 public class Administrator extends User {
 
     private int telephoneNumber;
     private String roomNo;
+
+    public Administrator() {
+        super();
+    }
 }

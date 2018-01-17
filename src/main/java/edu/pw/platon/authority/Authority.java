@@ -8,10 +8,13 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @PrimaryKeyJoinColumn(name = "username")
 public class Authority extends User{
 
     private String roomNo;
 
+    public Authority() {
+        super();
+    }
 }

@@ -7,6 +7,7 @@ import edu.pw.platon.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,13 +24,16 @@ public class InitialDataLoader implements
     private PrivilegeRepository privilegeRepository;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (alreadySetup)
             return;
-        UserDataGenerator ud = new UserDataGenerator(userRepository, roleRepository, privilegeRepository, studentRepository);
+        UserDataGenerator ud = new UserDataGenerator(userRepository, roleRepository, privilegeRepository,
+                studentRepository, passwordEncoder);
         ud.createPrivileges();
         ud.createRoles();
         ud.createUsers();
