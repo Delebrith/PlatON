@@ -16,7 +16,4 @@ public class Administrator extends User {
     private int telephoneNumber;
     private String roomNo;
 
-    public Administrator() {
-        super();
-    }
 }

@@ -30,7 +30,4 @@ public class Teacher extends User{
     )
     private Collection<Realisation> realisations;
 
-    public Teacher() {
-        super();
-    }
 }

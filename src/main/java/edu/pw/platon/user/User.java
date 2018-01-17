@@ -18,7 +18,7 @@ public class User {
     @Id
     @NotNull
     @NotEmpty
-    @Size(min = 6, max = 12)
+    @Size(min = 6, max = 14)
     private String username;
 
     @NotNull

@@ -39,7 +39,7 @@
                     </div>
                     </li>
                 </security:authorize>
-                <security:authorize access="hasRole('ROLE_OFFICE')">
+                <security:authorize access="hasAnyRole('ROLE_OFFICE', 'ROLE_AUTHORITY')">
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="AdministrationDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Administracja

@@ -1,5 +1,7 @@
 package edu.pw.platon.utilities;
 
+import edu.pw.platon.admin.AdministratorRepository;
+import edu.pw.platon.authority.AuthorityRepository;
 import edu.pw.platon.student.StudentRepository;
 import edu.pw.platon.user.PrivilegeRepository;
 import edu.pw.platon.user.RoleRepository;
@@ -14,29 +16,28 @@ import org.springframework.stereotype.Component;
 public class InitialDataLoader implements
         ApplicationListener<ContextRefreshedEvent> {
 
+    private final UserDataGenerator userDataGenerator;
+
     private boolean alreadySetup = false;
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private  RoleRepository roleRepository;
-    @Autowired
-    private PrivilegeRepository privilegeRepository;
-    @Autowired
-    private StudentRepository studentRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public InitialDataLoader(UserRepository userRepository, RoleRepository roleRepository,
+                             PrivilegeRepository privilegeRepository, StudentRepository studentRepository,
+                             PasswordEncoder passwordEncoder, AdministratorRepository administratorRepository,
+                             AuthorityRepository authorityRepository) {
+        this.userDataGenerator = new UserDataGenerator(userRepository, roleRepository, privilegeRepository, studentRepository,
+                passwordEncoder, administratorRepository, authorityRepository);
+    }
 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (alreadySetup)
             return;
-        UserDataGenerator ud = new UserDataGenerator(userRepository, roleRepository, privilegeRepository,
-                studentRepository, passwordEncoder);
-        ud.createPrivileges();
-        ud.createRoles();
-        ud.createUsers();
+        userDataGenerator.createPrivileges();
+        userDataGenerator.createRoles();
+        userDataGenerator.createStudent();
+        userDataGenerator.createAdmin();
+        userDataGenerator.createAuthority();
 
 //        List<Privilege> adminPrivileges = Arrays.asList(
 //                readPrivilege, writePrivilege);

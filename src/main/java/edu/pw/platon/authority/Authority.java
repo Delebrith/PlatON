@@ -14,7 +14,4 @@ public class Authority extends User{
 
     private String roomNo;
 
-    public Authority() {
-        super();
-    }
 }
