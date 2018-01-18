@@ -98,7 +98,7 @@ public class UserDataGenerator {
     public void createAdmin() {
         Administrator administrator = new Administrator();
         administrator.setUsername("administrator");
-        administrator.setPassword("admin");
+        administrator.setPassword(passwordEncoder.encode("admin"));
         administrator.setEmail("admin@admin.pl");
         administrator.setFirstName("Adam");
         administrator.setLastName("Administratorski");
@@ -112,7 +112,7 @@ public class UserDataGenerator {
     public void createAuthority() {
         Authority authority = new Authority();
         authority.setUsername("dziekan");
-        authority.setPassword("dziekan");
+        authority.setPassword(passwordEncoder.encode("dziekan"));
         authority.setEmail("dziekan@dziekan.pl");
         authority.setFirstName("Dariusz");
         authority.setLastName("Dziekański");
