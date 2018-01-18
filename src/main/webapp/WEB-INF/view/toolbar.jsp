@@ -26,6 +26,7 @@
                         <a class="dropdown-item" href="#">Dodaj użytkownika</a>
                         <a class="dropdown-item" href="#">Zarządzaj kontami</a>
                         <a class="dropdown-item" href="#">Utwórz powiadomienie</a>
+                        <a class="dropdown-item" href="#">Raporty</a>
                     </div>
                     </li>
                 </security:authorize>
