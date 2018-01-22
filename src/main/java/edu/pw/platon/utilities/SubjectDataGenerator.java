@@ -11,10 +11,10 @@ import java.util.List;
 
 public class SubjectDataGenerator {
 
-    private SubjectRepository subjectRepository;
-    private RealisationRepository realisationRepository;
-    private PassMethodRepository passMethodRepository;
-    private TeacherRepository teacherRepository;
+    private final SubjectRepository subjectRepository;
+    private final RealisationRepository realisationRepository;
+    private final PassMethodRepository passMethodRepository;
+    private final TeacherRepository teacherRepository;
 
     public SubjectDataGenerator(SubjectRepository subjectRepository, RealisationRepository realisationRepository, PassMethodRepository passMethodRepository, TeacherRepository teacherRepository) {
         this.subjectRepository = subjectRepository;

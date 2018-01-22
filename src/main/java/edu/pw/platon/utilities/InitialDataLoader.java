@@ -10,7 +10,6 @@ import edu.pw.platon.teacher.TeacherRepository;
 import edu.pw.platon.user.PrivilegeRepository;
 import edu.pw.platon.user.RoleRepository;
 import edu.pw.platon.user.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,42 +21,29 @@ public class InitialDataLoader implements
 
     private boolean alreadySetup = false;
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private  RoleRepository roleRepository;
-    @Autowired
-    private PrivilegeRepository privilegeRepository;
-    @Autowired
-    private StudentRepository studentRepository;
-    @Autowired
-    private SubjectRepository subjectRepository;
-    @Autowired
-    private RealisationRepository realisationRepository;
-    @Autowired
-    private PassMethodRepository passMethodRepository;
-    @Autowired
-    private TeacherRepository teacherRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private AdministratorRepository administratorRepository;
-    @Autowired
-    private AuthorityRepository authorityRepository;
+    private final UserDataGenerator userDataGenerator;
+    private final SubjectDataGenerator subjectDataGenerator;
 
+    public InitialDataLoader(UserRepository userRepository, RoleRepository roleRepository,
+                             PrivilegeRepository privilegeRepository, StudentRepository studentRepository,
+                             SubjectRepository subjectRepository, RealisationRepository realisationRepository,
+                             PassMethodRepository passMethodRepository, TeacherRepository teacherRepository,
+                             PasswordEncoder passwordEncoder, AdministratorRepository administratorRepository, AuthorityRepository authorityRepository) {
+        userDataGenerator = new UserDataGenerator(userRepository, roleRepository, privilegeRepository, studentRepository,
+                                                  passwordEncoder, administratorRepository, authorityRepository);
+        subjectDataGenerator = new SubjectDataGenerator(subjectRepository, realisationRepository, passMethodRepository, teacherRepository);
+    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (alreadySetup)
             return;
-        UserDataGenerator ud = new UserDataGenerator(userRepository, roleRepository, privilegeRepository, studentRepository, passwordEncoder, administratorRepository, authorityRepository);
-        ud.createPrivileges();
-        ud.createRoles();
-        ud.createAdmin();
-        ud.createAuthority();
-        ud.createStudent();
-        SubjectDataGenerator sd = new SubjectDataGenerator(subjectRepository, realisationRepository, passMethodRepository, teacherRepository);
-        sd.insertSubjectsAndRealisations();
+        userDataGenerator.createPrivileges();
+        userDataGenerator.createRoles();
+        userDataGenerator.createAdmin();
+        userDataGenerator.createAuthority();
+        userDataGenerator.createStudent();
+        subjectDataGenerator.insertSubjectsAndRealisations();
         alreadySetup = true;
     }
 }
