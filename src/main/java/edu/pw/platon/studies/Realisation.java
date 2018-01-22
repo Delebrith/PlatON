@@ -13,7 +13,7 @@ import java.util.Collection;
 public class Realisation {
 
     @Id
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -22,13 +22,12 @@ public class Realisation {
     private String semesterCode;
 
     @NotNull
-    @NotEmpty
     @ManyToOne
     Subject subject;
 
     @ManyToMany(mappedBy = "realisations")
     @NotNull
-    @NotEmpty
+    //@NotEmpty
     Collection<Teacher> teachers;
 
     @OneToMany(cascade = CascadeType.ALL)

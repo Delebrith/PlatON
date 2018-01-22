@@ -4,7 +4,6 @@ import edu.pw.platon.studies.Realisation;
 import edu.pw.platon.user.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +16,7 @@ import java.util.Collection;
 public class Teacher extends User{
 
     @NotNull
-    @NotEmpty
+    //@NotEmpty
     private Integer internalNo;
 
     private String roomNo;
@@ -29,5 +28,4 @@ public class Teacher extends User{
             inverseJoinColumns = @JoinColumn(name = "realisation_id", referencedColumnName = "id")
     )
     private Collection<Realisation> realisations;
-
 }

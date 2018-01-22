@@ -1,6 +1,5 @@
 package edu.pw.platon.studies;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,10 +21,10 @@ public class Subject {
     private String name;
 
     @NotNull
-    private int ects;
+    private Integer ects;
 
     @NotNull
-    @NotEmpty
+    //@NotEmpty
     @ManyToOne
     private PassMethod passMethod;
 

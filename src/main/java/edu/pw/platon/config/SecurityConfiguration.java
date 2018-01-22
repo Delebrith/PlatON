@@ -46,15 +46,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/office").access("hasRole('ROLE_OFFICE') or hasRole('ROLE_AUTHORITY')")
-                .antMatchers("/authority").access("hasRole('ROLE_AUTHORITY')")
-                .antMatchers("/teacher").access("hasRole('ROLE_TEACHER')")
-                .antMatchers("/student").access("hasRole('ROLE_STUDENT')")
-                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/office/*").access("hasRole('ROLE_OFFICE') or hasRole('ROLE_AUTHORITY')")
+                .antMatchers("/authority/*").access("hasRole('ROLE_AUTHORITY')")
+                .antMatchers("/teacher/*").access("hasRole('ROLE_TEACHER')")
+                .antMatchers("/student/*").access("hasRole('ROLE_STUDENT')")
+                .antMatchers("/admin/*").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/h2/*").permitAll()
-                .antMatchers("/home*").access("hasAnyRole('ROLE_ADMIN', 'ROLE_AUTHORITY', " +
-                "'ROLE_OFFICE', 'ROLE_TEACHER', 'ROLE_STUDENT')")
+                .antMatchers("/h2/*").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/home*").access("hasAnyRole('ROLE_STUDENT', 'ROLE_ADMIN', " +
+                    "'ROLE_TEACHER', 'ROLE_AUTHORITY', 'ROLE_OFFICE')")
                 .and()
                 .formLogin()
                     .loginPage("/login")
