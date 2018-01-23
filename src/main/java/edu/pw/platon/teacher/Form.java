@@ -16,7 +16,7 @@ public class Form {
     @NotNull
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "form")
     Collection<Preference> preferences;
 
     @NotNull

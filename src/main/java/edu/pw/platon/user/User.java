@@ -18,11 +18,12 @@ public class User {
     @Id
     @NotNull
     @NotEmpty
-    @Size(min = 6, max = 12)
+    @Size(min = 6, max = 14)
     private String username;
 
     @NotNull
     @NotEmpty
+    @Size(min = 5)
     private String password;
 
     @NotNull
@@ -48,4 +49,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
+    public User() {
+    }
 }

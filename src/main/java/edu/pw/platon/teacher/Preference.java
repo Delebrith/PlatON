@@ -27,4 +27,7 @@ public class Preference {
     @NotNull
     @ManyToOne
     private ClassDate classDate;
+
+    @ManyToOne
+    private Form form;
 }
