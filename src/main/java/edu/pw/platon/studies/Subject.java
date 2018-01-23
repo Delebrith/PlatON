@@ -32,7 +32,7 @@ public class Subject {
     @NotEmpty
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
     private Collection<Realisation> realisations;
 
     @ManyToMany(mappedBy = "subjects")

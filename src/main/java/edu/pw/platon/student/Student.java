@@ -19,6 +19,9 @@ public class Student extends User {
     @Range(min = 100000, max = 999999)
     private Integer studentBookNo;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    Collection<FinancialObligation> financialObligations;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+    private Collection<FinancialObligation> financialObligations;
+
+    @OneToMany(mappedBy = "student")
+    private Collection<Enrollment> enrollments;
 }

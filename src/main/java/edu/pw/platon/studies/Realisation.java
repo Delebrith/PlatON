@@ -30,10 +30,10 @@ public class Realisation {
     //@NotEmpty
     Collection<Teacher> teachers;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "realisation")
     Collection<Material> materials;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "realisation")
     Collection<ClassDate> classDates;
 
     @OneToOne(cascade = CascadeType.ALL)

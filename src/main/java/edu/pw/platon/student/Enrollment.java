@@ -20,10 +20,10 @@ public class Enrollment {
     private String status;
 
     @ManyToOne
-    Realisation realisation;
+    private Realisation realisation;
 
-    @OneToMany
-    Collection<Mark> marks;
+    @OneToMany(mappedBy = "enrollment")
+    private Collection<Mark> marks;
 
     @ManyToMany
     @JoinTable(
@@ -31,4 +31,7 @@ public class Enrollment {
             inverseJoinColumns = @JoinColumn(name = "class_date_id", referencedColumnName = "id")
     )
     private Collection<ClassDate> myClassDates;
+
+    @ManyToOne
+    private Student student;
 }
