@@ -23,6 +23,7 @@ public class User {
 
     @NotNull
     @NotEmpty
+    @Size(min = 5)
     private String password;
 
     @NotNull
