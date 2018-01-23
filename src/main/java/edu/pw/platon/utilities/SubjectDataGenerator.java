@@ -72,30 +72,15 @@ public class SubjectDataGenerator {
     }
 
     @Transactional
-    public Teacher createTeacherIfNotFound(String username, String password, String firstName, String lastName, String email, int internalNo, List<Realisation> realisations) {
-        Teacher teacher = teacherRepository.findByUsername(username);
-        if (teacher == null) {
-            teacher = new Teacher();
-            teacher.setUsername(username);
-            teacher.setPassword(password);
-            teacher.setFirstName(firstName);
-            teacher.setLastName(lastName);
-            teacher.setEmail(email);
-            teacher.setInternalNo(internalNo);
-            teacher.setRealisations(realisations);
-            teacherRepository.save(teacher);
-        }
-        return teacher;
-    }
-
-    @Transactional
     public void insertSubjectsAndRealisations() {
         PassMethod examPass = createPassMethodIfNotFound("E", "Egzamin podczas sesji egzaminacyjnej");
-        //PassMethod noExamPass = createPassMethodIfNotFound("B", "Zaliczenie w czasie semestru");
-        Subject subject = createSubjectIfNotFound("MAD", "Matematyka dyskretna", 3, examPass,"Kombinatoryka, grafy, dowodzenie twierdzeń grafowych");
+        Subject subject = createSubjectIfNotFound("MAD", "Matematyka dyskretna", 3, examPass,
+                "Kombinatoryka, grafy, dowodzenie twierdzeń grafowych");
         List<Realisation> realisations = createRealisationsIfNotFound(subject, "18L");
-        Teacher teacherA = createTeacherIfNotFound("jkowalski", "q1w2e3r4", "Jan", "Kowlaski", "jkow@mad.pl", 667, Arrays.asList(realisations.get(0)));
-        Teacher teacherB = createTeacherIfNotFound("mnowakow", "abcd1234", "Marek", "Nowakow", "mnow@mad.pl", 668, Arrays.asList(realisations.get(1)));
+        Teacher teacherA = teacherRepository.findByUsername("teacher1");
+        Teacher teacherB = teacherRepository.findByUsername("teacher2");
+        teacherA.setRealisations(Arrays.asList(realisations.get(0)));
+        teacherB.setRealisations(Arrays.asList(realisations.get(1)));
         teacherRepository.save(teacherA);
         teacherRepository.save(teacherB);
     }
