@@ -43,6 +43,8 @@ public class SubjectDataGenerator {
             Realisation rB = new Realisation();
             rA.setSubject(subject);
             rB.setSubject(subject);
+            rA.setName("A");
+            rB.setName("B");
             rA.setSemesterCode(semesterCode);
             rB.setSemesterCode(semesterCode);
             rA.setTeachers(new HashSet<>());
