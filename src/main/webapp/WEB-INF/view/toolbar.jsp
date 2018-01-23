@@ -56,7 +56,7 @@
                     </div>
                     </li>
                 </security:authorize>
-                <security:authorize access="hasRole('ROLE_TECHER')">
+                <security:authorize access="hasRole('ROLE_TEACHER')">
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="TeacherDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Wykładowca
