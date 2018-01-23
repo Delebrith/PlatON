@@ -2,6 +2,7 @@ package edu.pw.platon.studies;
 
 import edu.pw.platon.teacher.Teacher;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -13,7 +14,6 @@ import java.util.Collection;
 public class Realisation {
 
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -21,20 +21,21 @@ public class Realisation {
     @NotEmpty
     private String semesterCode;
 
+    @NotBlank
+    private String name;
+
     @NotNull
-    @NotEmpty
     @ManyToOne
     Subject subject;
 
     @ManyToMany(mappedBy = "realisations")
     @NotNull
-    @NotEmpty
     Collection<Teacher> teachers;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "realisation")
     Collection<Material> materials;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "realisation")
     Collection<ClassDate> classDates;
 
     @OneToOne(cascade = CascadeType.ALL)
