@@ -4,9 +4,7 @@ import edu.pw.platon.admin.AdministratorRepository;
 import edu.pw.platon.authority.AuthorityRepository;
 import edu.pw.platon.office.OfficeEmployeeRepository;
 import edu.pw.platon.student.StudentRepository;
-import edu.pw.platon.studies.PassMethodRepository;
-import edu.pw.platon.studies.RealisationRepository;
-import edu.pw.platon.studies.SubjectRepository;
+import edu.pw.platon.studies.*;
 import edu.pw.platon.teacher.TeacherRepository;
 import edu.pw.platon.user.PrivilegeRepository;
 import edu.pw.platon.user.RoleRepository;
@@ -24,14 +22,14 @@ public class InitialDataLoader implements
     private final UserDataGenerator userDataGenerator;
     private final SubjectDataGenerator subjectDataGenerator;
 
-    public InitialDataLoader(RoleRepository roleRepository, PrivilegeRepository privilegeRepository, StudentRepository studentRepository,
+    public InitialDataLoader(ClassTypeRepository classTypeRepository, RoleRepository roleRepository, PrivilegeRepository privilegeRepository, StudentRepository studentRepository,
                              SubjectRepository subjectRepository, RealisationRepository realisationRepository,
                              PassMethodRepository passMethodRepository, TeacherRepository teacherRepository,
                              PasswordEncoder passwordEncoder, AdministratorRepository administratorRepository, AuthorityRepository authorityRepository,
-                             OfficeEmployeeRepository officeEmployeeRepository) {
+                             OfficeEmployeeRepository officeEmployeeRepository, ClassDateRepository classDataRepository) {
         userDataGenerator = new UserDataGenerator(roleRepository, privilegeRepository, studentRepository,
                                                   passwordEncoder, administratorRepository, authorityRepository, teacherRepository, officeEmployeeRepository);
-        subjectDataGenerator = new SubjectDataGenerator(subjectRepository, realisationRepository, passMethodRepository, teacherRepository);
+        subjectDataGenerator = new SubjectDataGenerator(classDataRepository, classTypeRepository,subjectRepository, realisationRepository, passMethodRepository, teacherRepository);
     }
 
     @Override
@@ -42,6 +40,8 @@ public class InitialDataLoader implements
         userDataGenerator.createRoles();
         userDataGenerator.insertUsers();
         subjectDataGenerator.insertSubjectsAndRealisations();
+        subjectDataGenerator.insertClassTypes();
+        subjectDataGenerator.insertClassDates();
         alreadySetup = true;
     }
 }
