@@ -57,12 +57,13 @@ public class UserDataGenerator {
 
     @Transactional // ADMIN, AUTHORITY, OFFICE, STUDENT, TEACHER
     public Role createRoleIfNotFound(
-            String name, Collection<Privilege> privileges) {
+            String name, String displayName, Collection<Privilege> privileges) {
 
         Role role = roleRepository.findByName(name);
         if (role == null) {
             role = new Role();
             role.setName(name);
+            role.setDisplayName(displayName);
             role.setPrivileges(privileges);
             roleRepository.save(role);
         }
@@ -79,11 +80,11 @@ public class UserDataGenerator {
     public void createRoles() {
         Privilege readPrivilege = privilegeRepository.findByName("READ_PRIVILEGE");
         Privilege writePrivilege = privilegeRepository.findByName("WRITE_PRIVILEGE");
-        createRoleIfNotFound("ROLE_ADMIN", Arrays.asList(readPrivilege, writePrivilege));
-        createRoleIfNotFound("ROLE_STUDENT", Arrays.asList(readPrivilege, writePrivilege));
-        createRoleIfNotFound("ROLE_AUTHORITY", Arrays.asList(readPrivilege, writePrivilege));
-        createRoleIfNotFound("ROLE_TEACHER", Arrays.asList(readPrivilege, writePrivilege));
-        createRoleIfNotFound("ROLE_OFFICE", Arrays.asList(readPrivilege, writePrivilege));
+        createRoleIfNotFound("ROLE_ADMIN", "Administrator", Arrays.asList(readPrivilege, writePrivilege));
+        createRoleIfNotFound("ROLE_STUDENT", "Student", Arrays.asList(readPrivilege, writePrivilege));
+        createRoleIfNotFound("ROLE_AUTHORITY", "Przedstawiciel władz", Arrays.asList(readPrivilege, writePrivilege));
+        createRoleIfNotFound("ROLE_TEACHER", "Pracownik naukowy", Arrays.asList(readPrivilege, writePrivilege));
+        createRoleIfNotFound("ROLE_OFFICE", "Pracownik administracyjny", Arrays.asList(readPrivilege, writePrivilege));
     }
 
     @Transactional

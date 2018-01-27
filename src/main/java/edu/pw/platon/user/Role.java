@@ -3,6 +3,7 @@ package edu.pw.platon.user;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -20,6 +21,9 @@ public class Role {
     @NotNull
     @NotEmpty
     private String name;
+
+    @NotBlank
+    private String displayName;
 
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
