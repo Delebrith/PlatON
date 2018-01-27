@@ -84,7 +84,7 @@
                         Informacje
                     </a>
                     <div class="dropdown-menu" aria-labelledby="GuestDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Informacje o przedmiotach</a>
+                        <a class="dropdown-item" href="/subjectInfo">Informacje o przedmiotach</a>
                         <a class="dropdown-item" href="#">Plany modelowe</a>
                         <a class="dropdown-item" href="#">Przydatne linki</a>
                     </div>
