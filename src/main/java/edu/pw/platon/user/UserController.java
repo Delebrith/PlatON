@@ -29,7 +29,7 @@ public class UserController {
             String roles = "";
             for (Role role:
                  user.getRoles()) {
-                roles = roles + role.getName().replace("ROLE_", "") + " ";
+                roles = roles + role.getDisplayName() + " ";
             }
             modelAndView.addObject("role", roles);
         }
