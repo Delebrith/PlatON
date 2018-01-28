@@ -1,10 +1,10 @@
 package edu.pw.platon.user;
 
-import org.springframework.stereotype.Service;
+import org.springframework.security.core.GrantedAuthority;
 
-@Service
+import java.util.List;
+
 public interface UserService {
-    String login(User user);
-    void logout(User user);
-    void changePassword(String oldPassword, String newPassword);
+    boolean login(String username, String password);
+    List<GrantedAuthority> getAuthorities(String username);
 }

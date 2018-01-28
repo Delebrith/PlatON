@@ -21,14 +21,18 @@ public class Subject {
     private String name;
 
     @NotNull
-    private int ects;
+    private Integer ects;
 
     @NotNull
-    @NotEmpty
+    //@NotEmpty
     @ManyToOne
     private PassMethod passMethod;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @NotNull
+    @NotEmpty
+    private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
     private Collection<Realisation> realisations;
 
     @ManyToMany(mappedBy = "subjects")

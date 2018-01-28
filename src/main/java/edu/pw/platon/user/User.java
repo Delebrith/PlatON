@@ -18,12 +18,13 @@ public class User {
     @Id
     @NotNull
     @NotEmpty
-    @Size(min = 6, max = 12)
+    @Size(min = 6, max = 14)
     private String username;
 
     @NotNull
     @NotEmpty
-    private String passwordHash;
+    @Size(min = 5)
+    private String password;
 
     @NotNull
     @NotEmpty
@@ -40,7 +41,7 @@ public class User {
     @Email
     private String email;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
@@ -48,4 +49,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
+    public User() {
+    }
 }

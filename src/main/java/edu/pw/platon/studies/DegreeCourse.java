@@ -38,6 +38,6 @@ public class DegreeCourse {
     @NotNull
     private int minEctsPerSemester;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     private Collection<Requirement> requirements;
 }

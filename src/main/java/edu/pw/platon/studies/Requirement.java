@@ -18,6 +18,9 @@ public class Requirement {
     @NotNull
     private int semesterNo;
 
+    @NotNull
+    private Integer criticalSemesterNo;
+
     @ManyToMany
     @JoinTable(
             name = "requirements_subjects",
