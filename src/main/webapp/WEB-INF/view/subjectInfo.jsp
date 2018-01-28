@@ -27,17 +27,22 @@
                     <div class="card-header card-info">
                         Wyszukaj przedmiot
                     </div>
-                    <table>
-                        <tr>
-                            <th style='padding: 10px; width:20%' align=right >Kod Przedmiotu:</td>
-                            <td><input type='text' class="form-control" name='subjectCode' placeholder='Wartość' value='' autofocus></td>
-                        </tr>
-                        <tr>
-                            <td colspan=2 style='padding: 10px'>
-                                <input name="submit" class='btn btn-primary float-right' type="submit" value='Szukaj'/>
-                            </td>
-                        </tr>
-                    </table>
+                    <form name='subjectForm' class="form=group" action="subjectInfo" method="GET">
+                        <table>
+                            <tr>
+                                <th style='padding: 10px; width:20%' align=right >Kod Przedmiotu:</td>
+                                <td><input type='text' class="form-control" name='subjectCode' placeholder='Wartość' value='' autofocus></td>
+                                <td>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan=2 style='padding: 10px'>
+                                    <input name="submit" class='btn btn-primary float-right' type="submit" value='Szukaj'/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
             </div>
             <div id="logo" class="col-sm-2 col-md-4 col-lg-4" style="padding-left: 30px">

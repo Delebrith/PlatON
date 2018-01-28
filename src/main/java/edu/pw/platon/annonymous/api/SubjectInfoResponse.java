@@ -13,5 +13,5 @@ public class SubjectInfoResponse extends Response {
     private int ects;
     private String passMethod;
     private String subjectDescription;
-    private Realisation[] realisations;
+    //private Realisation[] realisations;
 }

@@ -99,7 +99,7 @@ public class AnnonymousServiceImpl implements AnnonymousService {
         subjectInfoResponse.setSubjectDescription(subject.getDescription());
         subjectInfoResponse.setName(subject.getName());
         subjectInfoResponse.setPassMethod(subject.getPassMethod().getName());
-        subjectInfoResponse.setRealisations((Realisation[]) subject.getRealisations().toArray());
+        //subjectInfoResponse.setRealisations((Realisation[]) subject.getRealisations().toArray());
         subjectInfoResponse.setDescription(Response.SUCCESS_MESSAGE);
         return subjectInfoResponse;
     }
