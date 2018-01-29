@@ -71,8 +71,7 @@ public class AnnonymousServiceImpl implements AnnonymousService {
             response.setDescription("No realisations for this subject in given semester");
         }
         List<ClassDate> classDateList = new ArrayList<>();
-        for (Realisation realisation:
-             realisations) {
+        for (Realisation realisation: realisations) {
             classDateList.addAll(realisation.getClassDates());
         }
         if (classDateList.isEmpty()){
@@ -96,10 +95,12 @@ public class AnnonymousServiceImpl implements AnnonymousService {
         SubjectInfoResponse subjectInfoResponse = new SubjectInfoResponse();
         subjectInfoResponse.setCode(subjectCode);
         subjectInfoResponse.setEcts(subject.getEcts());
-        subjectInfoResponse.setSubjectDescription(subject.getDescription());
+        String descr = subject.getDescription();
+        subjectInfoResponse.setSubjectDescription(descr);
         subjectInfoResponse.setName(subject.getName());
         subjectInfoResponse.setPassMethod(subject.getPassMethod().getName());
-        //subjectInfoResponse.setRealisations((Realisation[]) subject.getRealisations().toArray());
+        Realisation[] realisations = subject.getRealisations().toArray(new Realisation[subject.getRealisations().size()]);
+        subjectInfoResponse.setRealisations(realisations);
         subjectInfoResponse.setDescription(Response.SUCCESS_MESSAGE);
         return subjectInfoResponse;
     }

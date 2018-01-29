@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ include file="toolbar.jsp" %>
+<%@ include file="../toolbar.jsp" %>
 
 <!DOCTYPE HTML>
 <head>
@@ -31,7 +31,7 @@
                         <table>
                             <tr>
                                 <th style='padding: 10px; width:20%' align=right >Kod Przedmiotu:</td>
-                                <td><input type='text' class="form-control" name='subjectCode' placeholder='Wartość' value='' autofocus></td>
+                                <td><input style='padding: 10px; width:20%' type='text' class="form-control" name='subjectCode' placeholder='Wartość' value='' autofocus></td>
                                 <td>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 </td>
@@ -49,27 +49,40 @@
                 <img src="<c:url value='../resources/images/logo_WEiTI.JPG'/>" style="max-width: 50%" alt="LOGO WEITI"/>
             </div>
         </div>
-        <div class="row justify-content-md-center" style="text-align: center">
-            <div id="subjectInfo" class="col-sm-10 col-md-10 col-lg-10" style="padding: 30px">
-                <div class="card" >
-                    <div class="card-header card-info">
-                        Szczegóły
+        <c:if test="${param.subjectCode != null}">
+            <c:choose>
+                <c:when test="${name != 'Subject not found'}">
+                    <div class="row justify-content-md-center" style="text-align: center">
+                        <div id="subjectInfo" class="col-sm-10 col-md-10 col-lg-10" style="padding: 30px">
+                            <div class="card" >
+                                <div class="card-header card-info">
+                                    Szczegóły
+                                </div>
+                                <div class="card-block">
+                                    <p class="card-text" style="text-align: left; padding-left: 10px;">
+                                        Kod przedmiotu: ${subjectCode} <br>
+                                        Nazwa: ${name} <br>
+                                        ECTS: ${ects} <br>
+                                        Typ zaliczenia: ${passMethod} <br>
+                                        Poprzednie realizacje: ${realisations} <br>
+                                        Opis: ${description} <br><br><br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-block">
-                        <p class="card-text" style="text-align: left; padding-left: 10px;">
-                            Kod przedmiotu: ${subjectCode} <br>
-                            Nazwa: ${name} <br>
-                            ECTS: ${ects} <br>
-                            Zdawanie: ${passMethod} <br>
-                            Opis: ${description} <br><br><br>
-                        </p>
+                </c:when>
+                <c:otherwise>
+                    <div id="error" class="error" style="max-width: 40%">
+                        Nie znaleziono przedmiotu o kodzie: ${param.subjectCode}
                     </div>
-                </div>
-            </div>
-        </div>
+                </c:otherwise>
+            </c:choose>
+
+        </c:if>
     </center>
 
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
