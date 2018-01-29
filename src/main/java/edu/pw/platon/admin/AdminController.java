@@ -7,6 +7,7 @@ import javafx.util.Pair;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequestMapping("/admin")
+@Secured(value = "ROLE_ADMIN")
 public class AdminController {
 
     @Autowired

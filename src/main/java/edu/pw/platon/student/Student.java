@@ -5,17 +5,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
 @PrimaryKeyJoinColumn(name = "username")
+@Table(uniqueConstraints = @UniqueConstraint(name = "studentBook", columnNames = {"studentBookNo"}))
 public class Student extends User {
 
     @NotNull
@@ -23,8 +23,8 @@ public class Student extends User {
     private Integer studentBookNo;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private Collection<FinancialObligation> financialObligations;
+    private Collection<FinancialObligation> financialObligations = new ArrayList<>();
 
     @OneToMany(mappedBy = "student")
-    private Collection<Enrollment> enrollments;
+    private Collection<Enrollment> enrollments = new ArrayList<>();
 }

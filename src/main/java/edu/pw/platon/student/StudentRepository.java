@@ -9,4 +9,5 @@ import java.util.List;
 public interface StudentRepository extends CrudRepository<Student, String> {
     Student findTopByOrderByStudentBookNoDesc();
     List<Student> findAllByRoles(Collection<Role> roles);
+    Student findFirstByStudentBookNo(Integer studentBookNo);
 }

@@ -48,7 +48,7 @@
                     <div class="dropdown-menu" aria-labelledby="AdministrationDropdownMenuLink">
                         <a class="dropdown-item" href="/office/changeEnrollments">Zapisy na przedmioty</a>
                         <a class="dropdown-item" href="#">Harmonogramy</a>
-                        <a class="dropdown-item" href="#">Opłaty i stypendia</a>
+                        <a class="dropdown-item" href="/office/financialObligation/find">Opłaty i stypendia</a>
                         <a class="dropdown-item" href="#">Przedmioty</a>
                         <a class="dropdown-item" href="#">Rygory studiów</a>
                         <a class="dropdown-item" href="#">Kierunki</a>
