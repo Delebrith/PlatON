@@ -49,7 +49,7 @@
                     <table class="table justify-content-md-center">
                         <tr>
                             <form action="find" method="GET">
-                                <td><b>Wyszukaj użytkownika po nazwie: </b></td>
+                                <td><b>Wyszukaj studenta po numerze indeksu: </b></td>
                                 <td><input type="number" class="form-control" name="studentBookNo" placeholder="Numer indeksu"/></td>
                                 <td><button class='btn btn-primary' type="submit" style="margin: 5px">
                                     Szukaj
@@ -57,7 +57,6 @@
                                 </button></td>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
-                            <div class="btn-goup">
                             <form action="find" method="GET">
                                 <td><button class='btn btn-primary' type="submit" style="margin: 5px">
                                     Pokaż wszystkie
@@ -70,11 +69,11 @@
                                 </button></td>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
-                            </div>
                         </tr>
                     </table>
 
                     <div id="users" class="row justify-content-md-center table-responsive table-body" style="padding: 10px; margin-bottom: 10px">
+                        <br><br>
                         <h5>Lista zobowiązań finansowych</h5>
                             <table class="table justify-content-md-center" width="100%">
                                 <tr  style="text-align: center; padding: 5px; border-bottom: 1px solid gray">

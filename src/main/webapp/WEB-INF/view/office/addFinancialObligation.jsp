@@ -45,7 +45,7 @@
                 </div>
 
                 <form action="find" method="GET">
-                    <button class='btn btn-primary' type="submit" style="margin: 5px">
+                    <button class='btn btn-primary' type="submit" style="margin: 15px; float: left">
                         Wróć do listy
                     </button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
