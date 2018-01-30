@@ -73,7 +73,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="StudentDropdownMenuLink">
                         <a class="dropdown-item" href="#">Moje przedmioty</a>
-                        <a class="dropdown-item" href="#">Moje finanse</a>
+                        <a class="dropdown-item" href="/student/myFinances">Moje finanse</a>
                         <a class="dropdown-item" href="#">Rejestracja na przedmioty</a>
                         <a class="dropdown-item" href="#">Moje postępy</a>
                     </div>
