@@ -36,7 +36,6 @@
                 <div class="card-block justify-content-md-center">
 
                     <div id="obligationList" class="row justify-content-md-center table-responsive table-body" style="padding: 10px; margin-bottom: 10px">
-                       
                         <table class="table justify-content-md-center" width="100%">
                             <tr  style="text-align: center; padding: 5px; border-bottom: 1px solid gray">
                                 <th style="text-align: center">
