@@ -17,7 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class UserDataGenerator {
+public class
+UserDataGenerator {
 
     private final RoleRepository roleRepository;
     private final PrivilegeRepository privilegeRepository;
@@ -198,8 +199,18 @@ public class UserDataGenerator {
         createTeacherIfNotFound("teacher1", "teacher", "Krzysztof", null,
                 "Nauczycielski", "teacher1@teacher.pl", "333", 789789);
         createTeacherIfNotFound("teacher2", "teacher", "Krystyna", null,
-                "Nauczycielska", "teacher2@teacher.pl", "555", 789789);
-
+                "Nauczycielska", "teacher2@teacher.pl", "555", 789788);
+        createStudentIfNotFound("student3", "student","Jan",null,
+                "Zdawalski","student3@student",123100);
+        createStudentIfNotFound("student4", "student","Anotni","Edward",
+                "Studencki","student4@student",123101);
+        createStudentIfNotFound("student5", "student","Janina",null,
+                "Mądralińska","student5@student",123102);
+        createTeacherIfNotFound("teacher3", "teacher", "Jan", null,
+                "Janowicz", "teacher3@teacher.pl", "333", 789790);
+        createTeacherIfNotFound("teacher4", "teacher", "Józef", null,
+                "Jąrdaszczak", "teacher4@teacher.pl", "321", 789791);
+        createTeacherIfNotFound("teacher5", "teacher", "Anna", null,
+                "Karenina", "teacher5@teacher.pl", "112", 789792);
     }
-
 }
