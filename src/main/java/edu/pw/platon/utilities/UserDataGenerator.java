@@ -60,15 +60,15 @@ UserDataGenerator {
     public Role createRoleIfNotFound(
             String name, String displayName, Collection<Privilege> privileges) {
 
-            Role role = roleRepository.findByName(name);
-            if (role == null) {
-                role = new Role();
-                role.setName(name);
-                role.setDisplayName(displayName);
-                role.setPrivileges(privileges);
-                roleRepository.save(role);
-            }
-            return role;
+        Role role = roleRepository.findByName(name);
+        if (role == null) {
+            role = new Role();
+            role.setName(name);
+            role.setDisplayName(displayName);
+            role.setPrivileges(privileges);
+            roleRepository.save(role);
+        }
+        return role;
     }
 
     @Transactional
