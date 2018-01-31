@@ -4,3 +4,4 @@ How to manually install SSL certificate in
     https://support.securly.com/hc/en-us/articles/206081828-How-to-manually-install-the-Securly-SSL-certificate-in-Chrome
     Firefox:
     https://support.globalsign.com/customer/portal/articles/1211486-install-client-digital-certificate---firefox-for-windows
+Do not forget to restart your browser!
