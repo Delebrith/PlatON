@@ -13,11 +13,10 @@ public class FinancialObligation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
     private Long id;
 
     @NotNull
-    private float amount;
+    private Float amount;
 
     @NotNull
     @NotEmpty
@@ -29,7 +28,7 @@ public class FinancialObligation {
 
     private Date dueDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Student student;
 
 }
