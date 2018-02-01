@@ -58,6 +58,7 @@ public class AdminServiceImpl implements AdminService {
         return (List)roleRepository.findAll();
     }
 
+    @Transactional
     @Override
     public String resetPassword(String username, String idCardNo, String placeOfBirth) {
         if (!userRepository.exists(username)) return "Nie znaleziono użytkownika.";
@@ -68,6 +69,7 @@ public class AdminServiceImpl implements AdminService {
                 " 2 pierwsze znaki nazwy miasta urodzenia.";
     }
 
+    @Transactional
     @Override
     public String addNewUser(String role, String firstName, String secondName, String lastName, String email,
                               String placeOfBirth, String idCardNo, String function, String roomNo, Integer telephoneNo,
@@ -147,6 +149,7 @@ public class AdminServiceImpl implements AdminService {
         return SUCCESS_MESSAGE + "Pomyślnie wprowadzono zmiany!";
     }
 
+    @Transactional
     @Override
     public String deleteUser(String username) {
         if (!userRepository.exists(username)) return "Nie znaleziono użytkownika.";

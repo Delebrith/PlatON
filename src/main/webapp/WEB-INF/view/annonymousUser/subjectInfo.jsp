@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- style -->
-    <link rel="stylesheet" href="<c:url value='../resources/style.css'/>" type="text/css">
+    <link rel="stylesheet" href="<c:url value='../../resources/style.css'/>" type="text/css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div id="logo" class="col-sm-2 col-md-4 col-lg-4" style="padding-left: 30px">
-                <img src="<c:url value='../resources/images/logo_WEiTI.JPG'/>" style="max-width: 50%" alt="LOGO WEITI"/>
+                <img src="<c:url value='../../resources/images/logo_WEiTI.JPG'/>" style="max-width: 50%" alt="LOGO WEITI"/>
             </div>
         </div>
         <c:if test="${param.subjectCode != null}">

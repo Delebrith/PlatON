@@ -1,9 +1,9 @@
 package edu.pw.platon.annonymous;
 
-import edu.pw.platon.annonymous.api.RequirementsInfoResponse;
+import edu.pw.platon.annonymous.api.RequirementsInfoDto;
 import edu.pw.platon.annonymous.api.Response;
-import edu.pw.platon.annonymous.api.ScheduleInfoResponse;
-import edu.pw.platon.annonymous.api.SubjectInfoResponse;
+import edu.pw.platon.annonymous.api.ScheduleInfoDto;
+import edu.pw.platon.annonymous.api.SubjectInfoDto;
 import edu.pw.platon.studies.ClassDate;
 import edu.pw.platon.studies.DegreeCourse;
 import edu.pw.platon.studies.DegreeCourseRepository;
@@ -41,21 +41,21 @@ public class AnnonymousServiceImpl implements AnnonymousService {
         DegreeCourse degreeCourse = degreeCourseRepository.findOne(courseId);
         if (degreeCourse == null){
             Response response = new Response();
-            response.setDescription("Degree course not found");
+            response.setDescription("Nie ma takiego kierunku");
         }
         List<Requirement> requirements = requirementRepository.findByCourse(degreeCourse);
-        RequirementsInfoResponse requirementsInfoResponse = new RequirementsInfoResponse();
-        List<RequirementsInfoResponse.RequirementsInfo> requirementsInfoList = new ArrayList<>();
+        RequirementsInfoDto requirementsInfoDto = new RequirementsInfoDto();
+        List<RequirementsInfoDto.RequirementsInfo> requirementsInfoList = new ArrayList<>();
         for (Requirement requirement:
              requirements) {
-            RequirementsInfoResponse.RequirementsInfo requirementsInfo = new RequirementsInfoResponse.RequirementsInfo();
+            RequirementsInfoDto.RequirementsInfo requirementsInfo = new RequirementsInfoDto.RequirementsInfo();
             requirementsInfo.setSemestrNo(requirement.getSemesterNo());
             requirementsInfo.setSubjects((Subject[]) requirement.getSubjects().toArray());
             requirementsInfoList.add(requirementsInfo);
         }
-        requirementsInfoResponse.setCourse(courseId);
-        requirementsInfoResponse.setDescription(Response.SUCCESS_MESSAGE);
-        return requirementsInfoResponse;
+        requirementsInfoDto.setCourse(courseId);
+        requirementsInfoDto.setDescription(Response.SUCCESS_MESSAGE);
+        return requirementsInfoDto;
     }
 
     @Override
@@ -78,10 +78,10 @@ public class AnnonymousServiceImpl implements AnnonymousService {
             Response response = new Response();
             response.setDescription("No classes scheduled for this realisation");
         }
-        ScheduleInfoResponse scheduleInfoResponse = new ScheduleInfoResponse();
-        scheduleInfoResponse.setClassDates((ClassDate[]) classDateList.toArray());
-        scheduleInfoResponse.setDescription(Response.SUCCESS_MESSAGE);
-        return scheduleInfoResponse;
+        ScheduleInfoDto scheduleInfoDto = new ScheduleInfoDto();
+        scheduleInfoDto.setClassDates((ClassDate[]) classDateList.toArray());
+        scheduleInfoDto.setDescription(Response.SUCCESS_MESSAGE);
+        return scheduleInfoDto;
     }
 
     @Override
@@ -89,19 +89,19 @@ public class AnnonymousServiceImpl implements AnnonymousService {
         Subject subject = subjectRepository.findOne(subjectCode);
         if (subject == null){
             Response response = new Response();
-            response.setDescription("Subject not found");
+            response.setDescription("Nie ma takiego przedmiotu");
             return response;
         }
-        SubjectInfoResponse subjectInfoResponse = new SubjectInfoResponse();
-        subjectInfoResponse.setCode(subjectCode);
-        subjectInfoResponse.setEcts(subject.getEcts());
+        SubjectInfoDto subjectInfoDto = new SubjectInfoDto();
+        subjectInfoDto.setCode(subjectCode);
+        subjectInfoDto.setEcts(subject.getEcts());
         String descr = subject.getDescription();
-        subjectInfoResponse.setSubjectDescription(descr);
-        subjectInfoResponse.setName(subject.getName());
-        subjectInfoResponse.setPassMethod(subject.getPassMethod().getName());
+        subjectInfoDto.setSubjectDescription(descr);
+        subjectInfoDto.setName(subject.getName());
+        subjectInfoDto.setPassMethod(subject.getPassMethod().getName());
         Realisation[] realisations = subject.getRealisations().toArray(new Realisation[subject.getRealisations().size()]);
-        subjectInfoResponse.setRealisations(realisations);
-        subjectInfoResponse.setDescription(Response.SUCCESS_MESSAGE);
-        return subjectInfoResponse;
+        subjectInfoDto.setRealisations(realisations);
+        subjectInfoDto.setDescription(Response.SUCCESS_MESSAGE);
+        return subjectInfoDto;
     }
 }

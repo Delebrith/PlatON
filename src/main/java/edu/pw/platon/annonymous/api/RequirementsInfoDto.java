@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
-public class RequirementsInfoResponse extends Response {
+public class RequirementsInfoDto extends Response {
 
     @Data
     public static class RequirementsInfo {

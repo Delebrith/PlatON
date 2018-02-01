@@ -1,13 +1,11 @@
 package edu.pw.platon.annonymous;
 
 import edu.pw.platon.annonymous.api.Response;
-import edu.pw.platon.annonymous.api.SubjectInfoResponse;
+import edu.pw.platon.annonymous.api.SubjectInfoDto;
 import edu.pw.platon.studies.Realisation;
-import edu.pw.platon.teacher.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,18 +23,18 @@ public class AnnonymousViewController {
         Response response;
         if(subjectCode != null) {
             response = annonymousService.getSubjectInfo(subjectCode);
-            if(response.getDescription().equals("Subject not found")) {
+            if(response.getDescription().equals("Nie ma takiego przedmiotu")) {
                 modelAndView.addObject("name", "Subject not found");
                 return modelAndView;
             }
             modelAndView.addObject("subjectCode", subjectCode);
-            modelAndView.addObject("name", ((SubjectInfoResponse)response).getName());
-            modelAndView.addObject("ects", ((SubjectInfoResponse)response).getEcts());
-            modelAndView.addObject("passMethod", ((SubjectInfoResponse)response).getPassMethod());
-            String subjectDescription = ((SubjectInfoResponse)response).getSubjectDescription();
+            modelAndView.addObject("name", ((SubjectInfoDto)response).getName());
+            modelAndView.addObject("ects", ((SubjectInfoDto)response).getEcts());
+            modelAndView.addObject("passMethod", ((SubjectInfoDto)response).getPassMethod());
+            String subjectDescription = ((SubjectInfoDto)response).getSubjectDescription();
             modelAndView.addObject("description", subjectDescription);
             String realisations = "";
-            for(Realisation realisation:((SubjectInfoResponse)response).getRealisations()) {
+            for(Realisation realisation:((SubjectInfoDto)response).getRealisations()) {
                 realisations += realisation.getSemesterCode() + ", ";
             }
             modelAndView.addObject("realisations", realisations);
