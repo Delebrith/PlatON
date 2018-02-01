@@ -1,5 +1,6 @@
 package edu.pw.platon.user;
 
+import edu.pw.platon.annonymous.AnnonymousService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

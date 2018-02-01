@@ -23,10 +23,10 @@
                         Administrator
                     </a>
                     <div class="dropdown-menu" aria-labelledby="AdminDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Dodaj użytkownika</a>
-                        <a class="dropdown-item" href="#">Zarządzaj kontami</a>
+                        <a class="dropdown-item" href="/admin/addUser" method="GET">Dodaj użytkownika</a>
+                        <a class="dropdown-item" href="/admin/accountManagement">Zarządzaj kontami</a>
                         <a class="dropdown-item" href="#">Utwórz powiadomienie</a>
-                        <a class="dropdown-item" href="#">Raporty</a>
+                        <a class="dropdown-item" href="/admin/reports">Raporty</a>
                     </div>
                     </li>
                 </security:authorize>
@@ -84,9 +84,9 @@
                         Informacje
                     </a>
                     <div class="dropdown-menu" aria-labelledby="GuestDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Informacje o przedmiotach</a>
+                        <a class="dropdown-item" href="/annonymousUser/subjectInfo">Informacje o przedmiotach</a>
                         <a class="dropdown-item" href="#">Plany modelowe</a>
-                        <a class="dropdown-item" href="#">Przydatne linki</a>
+                        <a class="dropdown-item" href="/annonymousUser/usefullLinks">Przydatne linki</a>
                     </div>
                 </li>
                 <security:authorize access="!hasAnyRole('ROLE_ADMIN', 'ROLE_AUTHORITY', 'ROLE_OFFICE', 'ROLE_TEACHER', 'ROLE_STUDENT')">
