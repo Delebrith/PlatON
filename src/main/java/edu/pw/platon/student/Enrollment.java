@@ -5,7 +5,6 @@ import edu.pw.platon.studies.Realisation;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity
@@ -14,7 +13,6 @@ public class Enrollment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
     private Long id;
 
     private String status;
