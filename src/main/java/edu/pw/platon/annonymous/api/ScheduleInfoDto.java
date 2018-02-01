@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
-public class ScheduleInfoResponse extends Response {
+public class ScheduleInfoDto extends Response {
 
     private ClassDate[] classDates;
 }

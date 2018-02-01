@@ -84,9 +84,9 @@
                         Informacje
                     </a>
                     <div class="dropdown-menu" aria-labelledby="GuestDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Informacje o przedmiotach</a>
+                        <a class="dropdown-item" href="/annonymousUser/subjectInfo">Informacje o przedmiotach</a>
                         <a class="dropdown-item" href="#">Plany modelowe</a>
-                        <a class="dropdown-item" href="#">Przydatne linki</a>
+                        <a class="dropdown-item" href="/annonymousUser/usefullLinks">Przydatne linki</a>
                     </div>
                 </li>
                 <security:authorize access="!hasAnyRole('ROLE_ADMIN', 'ROLE_AUTHORITY', 'ROLE_OFFICE', 'ROLE_TEACHER', 'ROLE_STUDENT')">

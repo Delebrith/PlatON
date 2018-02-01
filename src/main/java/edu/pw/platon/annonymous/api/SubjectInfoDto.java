@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=true)
-public class SubjectInfoResponse extends Response {
+public class SubjectInfoDto extends Response {
 
     private String code;
     private String name;
