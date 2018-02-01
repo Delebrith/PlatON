@@ -46,9 +46,9 @@
                         Administracja
                     </a>
                     <div class="dropdown-menu" aria-labelledby="AdministrationDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Zapisy na przedmioty</a>
+                        <a class="dropdown-item" href="/office/changeEnrollments">Zapisy na przedmioty</a>
                         <a class="dropdown-item" href="#">Harmonogramy</a>
-                        <a class="dropdown-item" href="#">Opłaty i stypendia</a>
+                        <a class="dropdown-item" href="/office/financialObligation/find">Opłaty i stypendia</a>
                         <a class="dropdown-item" href="#">Przedmioty</a>
                         <a class="dropdown-item" href="#">Rygory studiów</a>
                         <a class="dropdown-item" href="#">Kierunki</a>
@@ -72,9 +72,9 @@
                         Student
                     </a>
                     <div class="dropdown-menu" aria-labelledby="StudentDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Moje przedmioty</a>
-                        <a class="dropdown-item" href="#">Moje finanse</a>
-                        <a class="dropdown-item" href="#">Rejestracja na przedmioty</a>
+                        <a class="dropdown-item" href="/student/subjects">Moje przedmioty</a>
+                        <a class="dropdown-item" href="/student/myFinances">Moje finanse</a>
+                        <a class="dropdown-item" href="/student/enrollments">Rejestracja na przedmioty</a>
                         <a class="dropdown-item" href="#">Moje postępy</a>
                     </div>
                     </li>
